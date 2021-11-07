@@ -12,7 +12,7 @@ import io.restassured.specification.RequestSpecification;
 import java.util.logging.Logger;
 
 import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class LoginSteps {
@@ -61,6 +61,7 @@ public class LoginSteps {
         logger.info("Start - Then with status"+status);
         //TODO Validar el código de respuesta
         response.then().statusCode(status);
+        assertEquals(status, response.statusCode()  );
     }
 
     @And("un token de autenticación")
