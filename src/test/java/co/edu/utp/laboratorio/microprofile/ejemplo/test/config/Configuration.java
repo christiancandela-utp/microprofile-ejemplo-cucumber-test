@@ -12,7 +12,17 @@ public interface Configuration extends Config {
     @DefaultValue("http://localhost:8080/data/")
     String url();
 
+    @Key("user.username")
+    @DefaultValue("nn")
+    String username();
+
+    @Key("user.password")
+    @DefaultValue("1234")
+    String password();
+
     static Configuration get(){
         return ConfigFactory.create(Configuration.class);
     }
+
+
 }
