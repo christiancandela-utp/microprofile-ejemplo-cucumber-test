@@ -7,6 +7,11 @@ public class DataManager {
 
     private Response response;
 
+
+    private DataManager(){
+
+    }
+
     public static DataManager getInstance(){
         if( instance.get() == null ){
             instance.set(new DataManager());
