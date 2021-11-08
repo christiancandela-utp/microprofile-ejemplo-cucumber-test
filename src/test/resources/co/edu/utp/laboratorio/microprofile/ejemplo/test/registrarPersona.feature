@@ -10,6 +10,7 @@ Feature: Login
     When invoco el servicio de registrar persona
     Then obtengo un status code 201
     And los datos de la persona enviados
+    And consistente con la estrutura esperada de "persona"
 
   Scenario: Registrar datos incompletos de persona no registrada
     Given Estoy autenticado
@@ -17,6 +18,7 @@ Feature: Login
     When invoco el servicio de registrar persona
     Then obtengo un status code 400
     And un mensaje de error
+    And consistente con la estrutura esperada de "error"
 
   Scenario: Registrar datos de persona registrada
     Given Estoy autenticado
@@ -24,3 +26,4 @@ Feature: Login
     When invoco el servicio de registrar persona
     Then obtengo un status code 409
     And un mensaje de error
+    And consistente con la estrutura esperada de "error"

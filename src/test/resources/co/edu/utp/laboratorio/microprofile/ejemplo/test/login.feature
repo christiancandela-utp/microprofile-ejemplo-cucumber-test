@@ -9,9 +9,11 @@ Feature: Login
     When invoco el servicio de autenticación
     Then obtengo un status code 200
     And un token de autenticación
+    And consistente con la estrutura esperada de "login"
 
   Scenario: Validar login respuesta de login incorrecto
     Given Soy un usuario registrado del sistema usando credenciales no validas
     When invoco el servicio de autenticación
     Then obtengo un status code 401
     And un mensaje de error
+    And consistente con la estrutura esperada de "error"

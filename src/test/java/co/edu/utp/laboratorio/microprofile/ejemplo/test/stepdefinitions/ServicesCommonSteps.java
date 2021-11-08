@@ -11,6 +11,7 @@ import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -38,5 +39,10 @@ public class ServicesCommonSteps {
         String token = response.getHeader("Authorization");
         assertNotNull(token);
         DataManager.getInstance().setToken(token);
+    }
+
+    @And("consistente con la estrutura esperada de {string}")
+    public void consistenteConLaEstruturaEsperadaDe(String schema) {
+        DataManager.getInstance().getResponse().then().body( matchesJsonSchemaInClasspath("schemas/"+schema+"-schema.json") );
     }
 }

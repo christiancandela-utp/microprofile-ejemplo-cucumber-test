@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "dni": {
+      "type": "string"
+    },
+    "nombre": {
+      "type": "string"
+    },
+    "telefonos": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "dni",
+    "nombre"
+  ]
+}
