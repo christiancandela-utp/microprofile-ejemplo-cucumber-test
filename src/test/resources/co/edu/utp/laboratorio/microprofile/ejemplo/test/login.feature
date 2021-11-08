@@ -14,3 +14,4 @@ Feature: Login
     Given Soy un usuario registrado del sistema usando credenciales no validas
     When invoco el servicio de autenticación
     Then obtengo un status code 401
+    And el cual retorna un mensaje de error
