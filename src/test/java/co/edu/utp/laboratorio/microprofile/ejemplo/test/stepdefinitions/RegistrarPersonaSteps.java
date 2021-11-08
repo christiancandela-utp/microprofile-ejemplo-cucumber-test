@@ -10,6 +10,7 @@ import io.cucumber.java.en.When;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -40,8 +41,9 @@ public class RegistrarPersonaSteps {
 
     @And("Tengo los datos de una persona registrada")
     public void tengoLosDatosDeUnaPersonaRegistrada() {
-        PersonaDTO[] persons = PersonService.findAll().as(PersonaDTO[].class);
-        assertNotEquals(0,persons.length);
-        personaDTO = Arrays.stream(persons).findAny().get();
+        Optional<PersonaDTO> personaDTOOptional = DataGenerator.getInstance().generarPersonaRegistrada();
+        Assertions.assertDoesNotThrow( ()->{
+            personaDTO = personaDTOOptional.orElseThrow(  );
+        },"No existen personas");
     }
 }

@@ -5,7 +5,11 @@ import co.edu.utp.laboratorio.microprofile.ejemplo.test.services.PersonService;
 import com.github.javafaker.Faker;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class DataGenerator {
     private static final DataGenerator instance = new DataGenerator();
@@ -38,5 +42,11 @@ public class DataGenerator {
 
     public PersonaDTO generarPersonaNoRegistradaIncompleta() {
         return PersonaDTO.of( null,faker.name().name(), generarTelefonos() );
+    }
+
+    public Optional<PersonaDTO> generarPersonaRegistrada() {
+        PersonaDTO[] persons = PersonService.findAll().as(PersonaDTO[].class);
+//        assertNotEquals(0,persons.length);
+        return Arrays.stream(persons).findAny();
     }
 }
