@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class RegistrarPersonaSteps {
     private PersonaDTO personaDTO;
 
-    @And("Tengo los datos de una persona no registrada")
+    @Given("Tengo los datos de una persona no registrada")
     public void tengoLosDatosDeUnaPersonaNoRegistrada() {
         personaDTO = DataGenerator.getInstance().generarPersonaNoRegistrada();
     }
@@ -34,12 +34,12 @@ public class RegistrarPersonaSteps {
         assertEquals( personaDTO , personaObtenida );
     }
 
-    @And("Tengo los datos incompletos de una persona no registrada")
+    @Given("Tengo los datos incompletos de una persona no registrada")
     public void tengoLosDatosIncompletosDeUnaPersonaNoRegistrada() {
         personaDTO = DataGenerator.getInstance().generarPersonaNoRegistradaIncompleta();
     }
 
-    @And("Tengo los datos de una persona registrada")
+    @Given("Tengo los datos de una persona registrada")
     public void tengoLosDatosDeUnaPersonaRegistrada() {
         Optional<PersonaDTO> personaDTOOptional = DataGenerator.getInstance().generarPersonaRegistrada();
         Assertions.assertDoesNotThrow( ()->{
